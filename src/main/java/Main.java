@@ -9,11 +9,12 @@ public class Main {
     public static void takeInput() {
         System.out.println("Please, enter the numbers your wish to draw");
         Scanner scanner = new Scanner(System.in);
-        if (!scanner.hasNextInt()) {
+        String input = scanner.nextLine();
+        if (!input.matches("[0-9]+")) {
             System.out.println("Please enter numbers only.");
             tryAgain();
         } else {
-            draw(scanner.nextInt());
+            startDraw(input);
         }
         System.out.println();
         tryAgain();
@@ -29,8 +30,8 @@ public class Main {
         }
     }
 
-    public static void draw(int number) {
-        String[] digits = Integer.valueOf(number).toString().split("");
+    public static void startDraw(String number) {
+        String[] digits = number.split("");
         String[][] picture = new String[5][digits.length];
         for (int i = 0; i < digits.length; i++) {
             String[] addNumber = draw(digits[i]);
